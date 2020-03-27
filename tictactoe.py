@@ -3,6 +3,7 @@ def tic_tac_toe():
     user1 = "X"
     user2 = "O"
     full_board_counter = 0
+    board_not_full = True
     board_dict = {"1":" ",
             "2":" ",
             "3":" ",
@@ -38,16 +39,17 @@ def tic_tac_toe():
         return user2_choice
     
     # Check if that field was played and return an error
-    def field_played(x):
-        print(x)
+    def field_played(user_choice):
+        while board_dict.get(user_choice) != " ":
+            user_choice = player1_input()
+            print(f"Field {board_dict.get(user_choice)} alrady played, pick another! ")
+        return user_choice
     
-
-
     # Loop that adds player choices to the dictionary
     draw_the_board()
     while board_not_full:    
-        #field_played(x)
         user1_choice = player1_input()
+        user1_choice = field_played(user1_choice)
         full_board_counter += 1
 
         # If statement that breaks the loop when the board is full 

@@ -4,16 +4,8 @@ def tic_tac_toe():
     user2 = "O"
     full_board_counter = 0
     board_not_full = True
-    board_dict = {"1":" ",
-            "2":" ",
-            "3":" ",
-            "4":" ",
-            "5":" ",
-            "6":" ",
-            "7":" ",
-            "8":" ",
-            "9":" ",          
-           }
+    board_dict = {"1":" ","2":" ","3":" ","4":" ","5":" ","6":" ","7":" ","8":" ","9":" "}
+    
     # Function to draw the board
     def draw_the_board():
         print("     |      |     ")
@@ -41,9 +33,10 @@ def tic_tac_toe():
    
    # fun that checks if player has won
     def win():
-        pass
-
-    # Loop that adds player choices to the dictionary
+        print(board_dict["1"])
+        if board_dict["1"] == board_dict["2"] == board_dict["3"]:
+            print(f"{board_dict['1']} Won")
+        
     draw_the_board()
     while board_not_full:    
         user1_choice = player_input("User 1")
@@ -51,6 +44,7 @@ def tic_tac_toe():
         full_board_counter += 1
         board_dict[user1_choice] = user1
         draw_the_board()
+        win()
         # If statement that breaks the loop when the board is full 
         if full_board_counter == 9:
             board_dict[user1_choice] = user1 # Brute force, to fix later
@@ -62,6 +56,7 @@ def tic_tac_toe():
         full_board_counter += 1
         board_dict[user2_choice] = user2
         draw_the_board()
+        win()
     else:
         print("Start a new game?")
 

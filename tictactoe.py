@@ -25,7 +25,7 @@ def tic_tac_toe():
         print("     |      |     ")
         print(" ",board_dict["1"]," |  ",board_dict["2"]," | ",board_dict["3"],"  ")
         print("     |      |     ")
-    
+        print("-----------------")  
     #Check 
     
     # Ask the  player for input, return the result and assign it to a variable
@@ -34,19 +34,20 @@ def tic_tac_toe():
         return user_choice
     
     # Check if that field was played and return an error
-    def field_played(user_choice):
+    def field_played(user_choice, user):
         while board_dict.get(user_choice) != " ":
-            user_choice = player_input()
             print(f"Field {board_dict.get(user_choice)} alrady played, pick another! ")
+            user_choice = player_input(user)
         return user_choice
     
     # Loop that adds player choices to the dictionary
     draw_the_board()
     while board_not_full:    
         user1_choice = player_input("User 1")
-        user1_choice = field_played(user1_choice)
+        user1_choice = field_played(user1_choice, "User 1")
         full_board_counter += 1
-
+        board_dict[user1_choice] = user1
+        draw_the_board()
         # If statement that breaks the loop when the board is full 
         if full_board_counter == 9:
             board_dict[user1_choice] = user1 # Brute force, to fix later
@@ -54,8 +55,8 @@ def tic_tac_toe():
             break
         
         user2_choice = player_input("User 2")
+        user2_choice = field_played(user2_choice,"User 2")
         full_board_counter += 1
-        board_dict[user1_choice] = user1
         board_dict[user2_choice] = user2
         draw_the_board()
     else:

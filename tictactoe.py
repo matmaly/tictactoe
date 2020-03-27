@@ -41,9 +41,11 @@ def tic_tac_toe():
     def field_played(x):
         print(x)
     
+
+
     # Loop that adds player choices to the dictionary
     draw_the_board()
-    for x in board_dict:
+    while board_not_full:    
         #field_played(x)
         user1_choice = player1_input()
         full_board_counter += 1
@@ -59,5 +61,7 @@ def tic_tac_toe():
         board_dict[user1_choice] = user1
         board_dict[user2_choice] = user2
         draw_the_board()
+    else:
+        print("Start a new game?")
 
 tic_tac_toe()

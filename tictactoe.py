@@ -26,7 +26,6 @@ def tic_tac_toe():
         print(" ",board_dict["1"]," |  ",board_dict["2"]," | ",board_dict["3"],"  ")
         print("     |      |     ")
         print("-----------------")  
-    #Check 
     
     # Ask the  player for input, return the result and assign it to a variable
     def player_input(user):
@@ -39,7 +38,11 @@ def tic_tac_toe():
             print(f"Field {board_dict.get(user_choice)} alrady played, pick another! ")
             user_choice = player_input(user)
         return user_choice
-    
+   
+   # fun that checks if player has won
+    def win():
+        pass
+
     # Loop that adds player choices to the dictionary
     draw_the_board()
     while board_not_full:    

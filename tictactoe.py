@@ -33,8 +33,8 @@ def tic_tac_toe():
    
    # fun that checks if player has won
     def win():
-        print(board_dict["1"])
-        if board_dict["1"] == board_dict["2"] == board_dict["3"]:
+        if (board_dict["1"] == board_dict["2"] == board_dict["3"]) or
+        (board_dict["4"] == board_dict["5"] == board_dict["6"]):
             print(f"{board_dict['1']} Won")
         
     draw_the_board()

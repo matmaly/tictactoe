@@ -50,7 +50,7 @@ def tic_tac_toe():
                         score["User 1"] += 1
                     else:
                         score["User 2"] += 1
-                    print(f"Score: User 1: {score['User 1']} User 2: {score['User 2']}")
+                    print(f"Score:\nUser 1: {score['User 1']}\nUser 2: {score['User 2']}")
                     won = True
                     return won
 

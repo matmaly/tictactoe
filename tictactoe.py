@@ -5,6 +5,7 @@ def tic_tac_toe():
     full_board_counter = 0
     board_not_full = True
     won = False
+    score = {"User 1":0, "User 2":0}
     board_dict = {"1":" ","2":" ","3":" ","4":" ","5":" ","6":" ","7":" ","8":" ","9":" "}
     
     # Function to draw the board
@@ -45,6 +46,11 @@ def tic_tac_toe():
                 board_dict["1"] == board_dict["5"] == board_dict["9"] == z or
                 board_dict["3"] == board_dict["5"] == board_dict["7"] == z):
                     print(f"{z} Won")
+                    if z == "X":
+                        score["User 1"] += 1
+                    else:
+                        score["User 2"] += 1
+                    print(f"Score: User 1: {score['User 1']} User 2: {score['User 2']}")
                     won = True
                     return won
 
@@ -56,7 +62,6 @@ def tic_tac_toe():
                 board_dict = {"1":" ","2":" ","3":" ","4":" ","5":" ","6":" ","7":" ","8":" ","9":" "}
             else:
                 break
-
         user1_choice = player_input("User 1")
         user1_choice = field_played(user1_choice, "User 1")
         full_board_counter += 1

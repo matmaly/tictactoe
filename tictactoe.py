@@ -47,35 +47,38 @@ def tic_tac_toe():
                     print(f"{z} Won")
                     won = True
                     return won
-        
-    draw_the_board()
-    while board_not_full:    
-        user1_choice = player_input("User 1")
-        user1_choice = field_played(user1_choice, "User 1")
-        full_board_counter += 1
-        board_dict[user1_choice] = user1
-        draw_the_board()
-        
-        # If statement that breaks the loop when the board is full 
-        if full_board_counter == 9:
-            board_dict[user1_choice] = user1 # Brute force, to fix later
-            draw_the_board()
-            break
-        
-        won = win()
-        # check if var won is true, if it is, break
-        if won:
-            break
 
-        user2_choice = player_input("User 2")
-        user2_choice = field_played(user2_choice,"User 2")
-        full_board_counter += 1
-        board_dict[user2_choice] = user2
+    print("Start a new game? ")    
+    new_game = input("Start a new Game? (type 'yes' or 'no' ")
+    if new_game == "yes":
         draw_the_board()
-        won = win()
-        if won:
-            break
+        while board_not_full:    
+            user1_choice = player_input("User 1")
+            user1_choice = field_played(user1_choice, "User 1")
+            full_board_counter += 1
+            board_dict[user1_choice] = user1
+            draw_the_board()
+            
+            # If statement that breaks the loop when the board is full 
+            if full_board_counter == 9:
+                board_dict[user1_choice] = user1 # Brute force, to fix later
+                draw_the_board()
+                break
+            
+            won = win()
+            # check if var won is true, if it is, break
+            if won:
+                break
+
+            user2_choice = player_input("User 2")
+            user2_choice = field_played(user2_choice,"User 2")
+            full_board_counter += 1
+            board_dict[user2_choice] = user2
+            draw_the_board()
+            won = win()
+            if won:
+                break
     else:
-        print("Start a new game?")
+        print("Bye")
 
 tic_tac_toe()

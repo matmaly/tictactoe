@@ -3,7 +3,6 @@ def tic_tac_toe():
     user1 = "X"
     user2 = "O"
     move_counter = 0  
-    board_not_full = True
     game_over = False
     score = {"User 1":0, "User 2":0}
     board_dict = {"1":" ","2":" ","3":" ","4":" ","5":" ","6":" ","7":" ","8":" ","9":" "}
@@ -50,7 +49,7 @@ def tic_tac_toe():
                         score["User 1"] += 1
                     else:
                         score["User 2"] += 1
-                    print(f"Score:\nUser 1: {score['User 1']}\nUser 2: {score['User 2']}")
+                    print(f"Score:\n{player1}: {score['User 1']}\n{player2}: {score['User 2']}")
                     game_over = True
                     return game_over
             elif move_counter == 9:
@@ -58,9 +57,10 @@ def tic_tac_toe():
                 game_over = True
                 return game_over
 
-
+    player1 = input("Enter player 1 name: ")
+    player2 = input("Enter player 2 name: ")
     draw_the_board()
-    while board_not_full:    
+    while True:    
         if game_over:
             new_game = input("Start a new Game? (type 'yes' or 'no' ")
             if new_game == "yes":
@@ -68,7 +68,7 @@ def tic_tac_toe():
                 move_counter = 0
             else:
                 break
-        user1_choice = player_input("User 1")
+        user1_choice = player_input(player1)
         user1_choice = field_played(user1_choice, "User 1")
         move_counter += 1
         board_dict[user1_choice] = user1
@@ -78,7 +78,7 @@ def tic_tac_toe():
         if game_over:
             continue
 
-        user2_choice = player_input("User 2")
+        user2_choice = player_input(player2)
         user2_choice = field_played(user2_choice,"User 2")
         move_counter += 1
         board_dict[user2_choice] = user2

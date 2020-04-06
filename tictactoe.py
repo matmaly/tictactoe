@@ -4,6 +4,7 @@ def tic_tac_toe():
     user2 = "O"
     full_board_counter = 0
     board_not_full = True
+    won = False
     board_dict = {"1":" ","2":" ","3":" ","4":" ","5":" ","6":" ","7":" ","8":" ","9":" "}
     
     # Function to draw the board
@@ -30,34 +31,58 @@ def tic_tac_toe():
             print(f"Field {board_dict.get(user_choice)} alrady played, pick another! ")
             user_choice = player_input(user)
         return user_choice
-   
-   # fun that checks if player has won
+    
+    # fun that checks if player has won
     def win():
-        if (board_dict["1"] == board_dict["2"] == board_dict["3"]) or
-        (board_dict["4"] == board_dict["5"] == board_dict["6"]):
-            print(f"{board_dict['1']} Won")
-        
+        marker = ("X","O")
+        for z in marker:
+            if (board_dict["1"] == board_dict["2"] == board_dict["3"] == z or
+                board_dict["4"] == board_dict["5"] == board_dict["6"] == z or
+                board_dict["7"] == board_dict["8"] == board_dict["9"] == z or
+                board_dict["1"] == board_dict["4"] == board_dict["7"] == z or
+                board_dict["2"] == board_dict["5"] == board_dict["8"] == z or
+                board_dict["3"] == board_dict["6"] == board_dict["9"] == z or
+                board_dict["1"] == board_dict["5"] == board_dict["9"] == z or
+                board_dict["3"] == board_dict["5"] == board_dict["7"] == z):
+                    print(f"{z} Won")
+                    won = True
+                    return won
+
     draw_the_board()
     while board_not_full:    
+        if won:
+            new_game = input("Start a new Game? (type 'yes' or 'no' ")
+            if new_game == "yes":
+                board_dict = {"1":" ","2":" ","3":" ","4":" ","5":" ","6":" ","7":" ","8":" ","9":" "}
+            else:
+                break
+
         user1_choice = player_input("User 1")
         user1_choice = field_played(user1_choice, "User 1")
         full_board_counter += 1
         board_dict[user1_choice] = user1
         draw_the_board()
-        win()
+        
         # If statement that breaks the loop when the board is full 
         if full_board_counter == 9:
             board_dict[user1_choice] = user1 # Brute force, to fix later
             draw_the_board()
             break
         
+        won = win()
+        # check if var won is true, if it is, break
+        if won:
+            continue
+
         user2_choice = player_input("User 2")
         user2_choice = field_played(user2_choice,"User 2")
         full_board_counter += 1
         board_dict[user2_choice] = user2
         draw_the_board()
-        win()
+        won = win()
+        if won:
+            continue
     else:
-        print("Start a new game?")
+        print("Bye")
 
 tic_tac_toe()

@@ -33,16 +33,19 @@ def tic_tac_toe():
    
    # fun that checks if player has won
     def win():
-        if (board_dict["1"] == board_dict["2"] == board_dict["3"] or
-            board_dict["4"] == board_dict["5"] == board_dict["6"] or
-            board_dict["7"] == board_dict["8"] == board_dict["9"] or
-            board_dict["1"] == board_dict["4"] == board_dict["7"] or
-            board_dict["2"] == board_dict["5"] == board_dict["8"] or
-            board_dict["3"] == board_dict["6"] == board_dict["9"] or
-            board_dict["1"] == board_dict["5"] == board_dict["9"] or
-            board_dict["3"] == board_dict["5"] == board_dict["7"]):
-            print(f"{board_dict['1']} Won")
-            return break
+        marker = ("X","O")
+        for z in marker:
+            if (board_dict["1"] == board_dict["2"] == board_dict["3"] == z or
+                board_dict["4"] == board_dict["5"] == board_dict["6"] == z or
+                board_dict["7"] == board_dict["8"] == board_dict["9"] == z or
+                board_dict["1"] == board_dict["4"] == board_dict["7"] == z or
+                board_dict["2"] == board_dict["5"] == board_dict["8"] == z or
+                board_dict["3"] == board_dict["6"] == board_dict["9"] == z or
+                board_dict["1"] == board_dict["5"] == board_dict["9"] == z or
+                board_dict["3"] == board_dict["5"] == board_dict["7"] == z):
+                print(f"{z} Won")
+            elif :
+                print("draw")
         
     draw_the_board()
     while board_not_full:    
@@ -51,13 +54,12 @@ def tic_tac_toe():
         full_board_counter += 1
         board_dict[user1_choice] = user1
         draw_the_board()
-        win()
         # If statement that breaks the loop when the board is full 
         if full_board_counter == 9:
             board_dict[user1_choice] = user1 # Brute force, to fix later
             draw_the_board()
             break
-        
+        win()
         user2_choice = player_input("User 2")
         user2_choice = field_played(user2_choice,"User 2")
         full_board_counter += 1
